@@ -2,12 +2,18 @@
 	<div id="firstComponent" @click='show'>
 		<h1>{{title}}</h1>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. </p>
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. 
+		</p>
 		<div class="loading" v-if="loading">
-      Loading...
-    </div>
+			Loading...
+		</div>
+		<header class="bar bar-nav">
+			<a class="icon icon-left pull-left"></a>
+			<a class="icon icon-refresh pull-right"></a>
+			<h1 class="title">标题</h1>
+		</header>
 	</div>
 </template>
 

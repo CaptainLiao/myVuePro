@@ -10,7 +10,7 @@ import ajax from './lib/utils'
 import FirstComponent from './components/firstcomponent.vue'
 
 Vue.use(VueAxios, axios);
-Vue.prototype.$ajax = ajax;
+
 
 Vue.component('first-component', FirstComponent)
 /* eslint-disable no-new */
