@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
- 
+    <p @click="jumpToFirst">go to firstcomponent</p>
+    <p @click="jumpToTopic">go to topic</p>
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -22,11 +23,21 @@
 </template>
 
 <script>
+  import router from '../router/index'
 export default {
   name: 'hello',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App liaofeiyin'
+    }
+  },
+  methods: {
+    jumpToFirst() {   // 编程式导航
+      console.log(this)
+      router.push({name: 'firstcomponent', params: {id: 555}, query: {plan: 'sd'}})
+    },
+    jumpToTopic() {
+      router.push({name: 'topic'})
     }
   }
 }
