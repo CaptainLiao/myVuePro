@@ -26,6 +26,21 @@ export default {
 <style lang="less" type="text/css" rel="stylesheet/less">
   * {
     overflow: auto!important;
+    
+  }
+  p,ul,li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .left {
+    text-align: left;
+  }
+  .fl {
+    float: left;
+  }
+  .fr {
+    float: right;
   }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

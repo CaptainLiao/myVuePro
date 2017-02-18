@@ -1,7 +1,22 @@
 <template>
 	<header class="bar bar-nav">
-      <span class="icon icon-menu pull-left"></span>
-			<span class="icon icon-me pull-right"></span>
+			<a @click='showNavbar' class="icon icon-left pull-left"></a>
+			<a class="icon icon-refresh pull-right"></a>
 			<h1 class="title">标题</h1>
 		</header>
 </template>
+
+<script type="text/javascript">
+	export default {
+		data() {
+			return {
+
+			}
+		},
+		method: {
+			showNavbar() {
+				
+			}
+		}
+	}
+</script>
