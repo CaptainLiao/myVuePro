@@ -36,11 +36,9 @@
     width:100%;
   }
   .left {
-    display: inline-block;
     text-align: left;
   }
   .right {
-    display: inline-block;
     text-align: right;
   }
   .fl {

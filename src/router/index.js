@@ -12,7 +12,7 @@ import TopicDetail from 'view/topic_detail'
 Vue.use(Router);
 const routes = [
   {
-    path: '/',
+    path: '/hello',
     name: 'Hello',
     component: Hello
   },
@@ -22,7 +22,7 @@ const routes = [
     component: FirstComponent
   },
   {
-    path:'/topic',
+    path:'/',
     name:'topic',
     component: Topic
   },
