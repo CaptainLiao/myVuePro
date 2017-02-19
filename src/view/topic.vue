@@ -1,80 +1,108 @@
 <template>
   <div id="topic">
     <c-header></c-header>
-    <div class="content">
-      <ul class="content-padded">
+    <div class="content-padded">
+
+      <ul >
         <li v-for="item in data">
           <div class="row">
-            <span class="col-15 tag1" :class="">{{item.tab}}</span>
-            <span class="col-85 left">{{item.title}}</span>
-          </div>
-          <div class="row">
-            <img class="col-15 avatar" :src="item.author.avatar_url">
-            <div class="col-85 t-content">
-              <div class="fl">
-                <p class="username">{{item.author.loginname}}</p>
-                <p>dd</p>
-              </div>
-              <div class="fr">
-                <p><span class="repply-cont">{{item.reply_count}}</span>/{{item.visit_count}}</p>
-                <p>ss</p>
+            <avatar class="col-15 avatar" :avatar_url="item.author.avatar_url" :u_id="item.author_id"></avatar> 
+            <div class="col-85">
+              <h5 class="left t-title" @click='toTopicDetail(item.id)' :data-id="item.id">
+                <span class="tag1" :class="item.tag">{{item.tab}}</span>
+                {{item.title}}
+              </h5>
+              <div class="t-content left">
+                <div class="fl">
+                  <p class="username">{{item.author.loginname}}</p>
+                  <p>{{item.create_time}}</p>
+                </div>
+                <div class="fr right">
+                  <p><span class="repply-cont">{{item.reply_count}} </span> / {{item.visit_count}}</p>
+                  <p>{{item.last_reply_time}}</p>
+                </div>
               </div>
             </div>
           </div>
-          
-          
         </div>
       </div>
     </div>
-  </div>
-</template>
+  </template>
 
-<script>
-  export default {
+  <script>
+    import utils from '../lib/utils.js'
+    export default {
       data() {
-          return {
-              data:[]
-          }
+        return {
+          data:[]
+        }
       },
-      created() {
-        this.axios.get('https://cnodejs.org/api/v1/topics')
-                  .then((res)=>{
-                    console.log(res)
-                    this.data = res.data.data;
-                  })
-                  .catch((res) => {
-                    console.log(res)
-                  })
+      props: {
+        "data-id": String
+      },
+      methods: {
+        toTopicDetail(id) {
+          console.log(id)
+          this.$router.push({name: 'topicDetail',params:{id: id}});
+        }
       },
       mounted() {
-         $.alert('Here goes alert text');
+        $.showPreloader();
+        this.axios.get(this.CONFIG.API.topicList)
+        .then((res)=>{
+          console.log(res)
+          $.hidePreloader();
+          let data = res.data.data;
+          data.forEach((item) => {
+            let tab = item.tab;
+            let create_at = item.create_at;
+            let reply_at = item.last_reply_at;
+            if (!tab || tab == "") {
+              item.tab = 'other'
+            }
+            if(tab == "share" || tab == "job") {
+              item.tag = this.CONFIG.TAG.tag1
+            }else {
+              item.tag = this.CONFIG.TAG.tag2
+            }
+            item.create_time = utils.transformDate(create_at);
+            item.last_reply_time = utils.transformDate(reply_at);
+          })
+          this.data = data;
+        })
+        .catch((res) => {
+          console.log(res)
+        })
       }
-  }
-</script>
+    }
+  </script>
 
-<style scope rel='stylesheet/less' lang='less'>
-.t-content {
-  font-size: 14px;
-}
-.repply-cont {
-  color: #22d222;
-}
-li {
-  margin-bottom: 4%;
-}
-.tag1,.tag2 {
-  width: 60%;
-  font-size: 10px;
-  line-height: 24px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-.tag1 {
-  color: #fff;
-  background: #22d222;
-}
-.tag2 {
-  color: #666;
-  background: #ddd;
-}
-</style>
+  <style scoped rel='stylesheet/less' lang='less'>
+    .t-content {
+      margin-top: 5%;
+      font-size: 14px;
+      font-weight: normal;
+    }
+    .repply-cont {
+      color: #22d222;
+    }
+
+    h1,h2,h3,h4,h5,h6,p,ul,li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    ul {
+
+    }
+    li {
+      margin-bottom: 4%;
+      padding-bottom: 2%;
+      border-bottom: 1px solid #e6e0e0;
+    }
+    .t-title {
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+    }
+  </style>
