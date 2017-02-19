@@ -13,13 +13,12 @@
                 </div>
             </section>
             <section v-html="data.content">this is a topic detail</section>
-
             <section class="topic_reply">
                 <p class="reply_total"><span>{{data.reply_total}}</span> 回复</p>
                 <div class="reply_list">
                     <div class="reply_item" v-for="item in data.replies">
                         <div class="row">
-                            <avatar class="col-15 avatar" :avatar_url="item.author.avatar_url" :u_id="item.id"></avatar>
+                            <avatar class="col-15 avatar" :avatar_url="item.author.avatar_url" :username="item.author.loginname"></avatar>
                             <div class="col-85">
                                 <div class="fl"><span>{{item.author.loginname}}</span> 发表于 {{item.reply_time}}</div>
                                 <div class="fr">

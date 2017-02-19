@@ -1,5 +1,5 @@
 <template>
-    <img :src="avatar_url" :data-id="u_id"  @click='toUserInfo(u_id)' />
+    <img :src="avatar_url" :data-id="username" @click='toUserCenter(username)'>
 </template>
 
 <script type="text/javascript">
@@ -9,16 +9,17 @@
                 data: {}
             }
         },
-        props: ['avatar_url', 'u_id'],
+        props: ["avatar_url", "username"],
         methods: {
-            toUserInfo(uId) {
-                console.log(uId);
+            toUserCenter(username) {
+                console.log(username)
+                this.$router.push({name:"userCenter", params: {username: username}})
             }
         }
     }
 </script>
 
-<style scoped type="text/css" rel="stylesheet/less" lang="less">
+<style type="text/css" ref="stylesheet/less" lang="less">
     img {
         border-radius: 50%;
     }

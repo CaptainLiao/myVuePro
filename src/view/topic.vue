@@ -6,7 +6,7 @@
       <ul >
         <li v-for="item in data">
           <div class="row">
-            <avatar class="col-15 avatar" :avatar_url="item.author.avatar_url" :u_id="item.author_id"></avatar> 
+            <avatar class="col-15 avatar" :avatar_url="item.author.avatar_url" :username="item.author.loginname"></avatar> 
             <div class="col-85">
               <h5 class="left t-title" @click='toTopicDetail(item.id)' :data-id="item.id">
                 <span class="tag1" :class="item.tag">{{item.tab}}</span>

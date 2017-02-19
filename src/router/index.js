@@ -2,11 +2,13 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from 'components/Hello'
 import FirstComponent from 'components/firstcomponent'
+
 /**
  * view层
  */
 import Topic from 'view/topic'
 import TopicDetail from 'view/topic_detail'
+import UserCenter from 'view/user_center'
 
 
 Vue.use(Router);
@@ -30,6 +32,11 @@ const routes = [
     path: '/topic/:id',
     name: "topicDetail",
     component: TopicDetail
+  },
+  {
+    path: "/user/:username",
+    name: "userCenter",
+    component: UserCenter
   }
 ];
 export default new Router({
