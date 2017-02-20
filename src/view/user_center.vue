@@ -25,7 +25,7 @@
                             <li v-for="item in data.recent_replies">
                                 <div class="row">
                                   <div class="col-15">
-                                      <avatar :avatar_url="item.author.avatar_url" :username="item.author.loginname"></avatar> 
+                                      <avatar :avatar_url="item.author.avatar_url" :username="item.author.loginname"></avatar>
                                   </div>
                                   <div class="col-85">
                                     <h5 class="left t-title" @click='toTopicDetail(item.id)' :data-id="item.id">
@@ -47,7 +47,7 @@
                 <li v-for="item in data.recent_topics">
                         <div class="row">
                           <div class="col-15">
-                              <avatar :avatar_url="item.author.avatar_url" :username="item.author.loginname"></avatar> 
+                              <avatar :avatar_url="item.author.avatar_url" :username="item.author.loginname"></avatar>
                           </div>
                           <div class="col-85">
                             <h5 class="left t-title" @click='toTopicDetail(item.id)' :data-id="item.id">
@@ -69,7 +69,7 @@
 </div>
 </template>
 
-<script type="text/javascript">
+<script>
     export default {
         data() {
             return {
@@ -78,87 +78,107 @@
         },
         methods: {
           toTopicDetail(id) {
-            console.log(id)
             this.$router.push({name: 'topicDetail',params:{id: id}});
-          }
-        },
-        created() {
+          },
+          fetchDate() {
             let _this = this;
             let username = this.$route.params.username;
             let renderPage = (res) => {
-                let data = res.data.data;
-                let replies = data.recent_replies;
-                let topics = data.recent_topics;
-                data.create_time = data.create_at.split('T')[0];
-                replies.forEach((item)=> {
-                    item.last_reply_time = _this.utils.transformDate(item.last_reply_at)
-                })
-                topics.forEach((item)=> {
-                    item.last_reply_time = _this.utils.transformDate(item.last_reply_at)
-                })
-                _this.data = data;
+              let data = res.data.data;
+              let replies = data.recent_replies;
+              let topics = data.recent_topics;
+              data.create_time = data.create_at.split('T')[0];
+              replies.forEach((item)=> {
+                item.last_reply_time = _this.utils.transformDate(item.last_reply_at)
+            })
+              topics.forEach((item)=> {
+                item.last_reply_time = _this.utils.transformDate(item.last_reply_at)
+            })
+              _this.data = data;
             }
             this.getAjax("GET", this.CONFIG.API.userCenter + username, '', renderPage)
+          }
+        },
+        created() {
+          this.fetchDate();
+        },
+        watch: {
+            "$route": "fetchDate"
         }
     }
 </script>
 
 <style type="text/css" ref="stylesheet/less" lang="less" scoped>
-    .avatar {
-        width: 100%;
-        padding-top: 4%;
-        text-align: center;
-        background: #ddd;
-    }
-    .avatar_img {
-     img {
-         width: 4rem;
-         height: 4rem;
-     }
- }
- .avatar_info {
+  .avatar {
+    width: 100%;
+    padding-top: 4%;
+    text-align: center;
+    background: #ddd;
+  }
+
+  .avatar_img {
+
+  img {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  }
+  .avatar_info {
     margin: 0 4% 0 0;
     padding: 2rem 0 .5rem 0;
     font-size: 14px;
-}
-.score {
+  }
+
+  .score {
     color: #22d222;
-}
-.t-content {
-  margin-right: 4%;  
-  margin-top: 5%;
-  font-size: 14px;
-  font-weight: normal;
-  display: flex;
-  justify-content: space-between;
-}
-.repply-cont {
-  color: #22d222;
-}
+  }
 
-h1,h2,h3,h4,h5,h6,p,ul,li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-ul {
+  .t-content {
+    margin-right: 4%;
+    margin-top: 5%;
+    font-size: 14px;
+    font-weight: normal;
+    display: flex;
+    justify-content: space-between;
+  }
 
-}
-li {
-  margin-bottom: 4%;
-  padding:2% 0;
-  border-bottom: 1px solid #e6e0e0;
-}
-.t-title {
-  overflow: hidden;
-  text-overflow:ellipsis;
-  white-space: nowrap;
-}
-.content-block {
+  .repply-cont {
+    color: #22d222;
+  }
+
+  h1, h2, h3, h4, h5, h6, p, ul, li {
+    list-style: none;
     margin: 0;
     padding: 0;
-    .row {
-        margin: 0;
-    }
-}
+  }
+
+  ul {
+
+  }
+
+  li {
+    margin-bottom: 4%;
+    padding: 2% 0;
+    border-bottom: 1px solid #e6e0e0;
+    &:last-of-type {
+      border: 0;
+     }
+  }
+
+  .t-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .content-block {
+    margin: 0;
+    padding: 0;
+
+  .row {
+    margin: 0;
+  }
+
+  }
 </style>
