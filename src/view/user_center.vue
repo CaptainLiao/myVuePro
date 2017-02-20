@@ -101,6 +101,7 @@
         },
         created() {
           this.fetchDate();
+
         },
         watch: {
             "$route": "fetchDate"

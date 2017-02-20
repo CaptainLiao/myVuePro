@@ -2,7 +2,7 @@
 
 const utils = {
     getAjax(method, url, opts, cb) {
-        $.showPreloader()
+        $.showPreloader();
         $(".content-padded").hide();
         this.axios({
             method: method,

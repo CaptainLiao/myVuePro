@@ -11,6 +11,7 @@ import Hello from  './components/Hello.vue'
 import FirstComponent from './components/firstcomponent.vue'
 import Header from './components/header.vue'
 import Avatar from './components/avatar.vue'
+import Navbar from './components/navbar.vue'
 
 import CONFIG from './lib/config.js'
 
@@ -25,6 +26,7 @@ Vue.prototype.utils = utils;
 Vue.component('first-component', FirstComponent)
 Vue.component('avatar', Avatar)
 Vue.component('c-header', Header)
+Vue.component('c-navbar', Navbar)
 /* eslint-disable no-new */
 new Vue({
   router,

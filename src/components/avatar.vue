@@ -1,5 +1,5 @@
 <template>
-  <img :src="avatar_url" :data-id="username" @click='toUserCenter(username)'>
+  <img :src="avatar_url" :data-id="username" @click.capture='toUserCenter(username)'>
 </template>
 
 <script type="text/javascript">
