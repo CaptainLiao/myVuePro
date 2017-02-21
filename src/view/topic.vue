@@ -1,8 +1,7 @@
 <template>
   <div id="topic">
-
+    <c-header></c-header>
     <div class="content-padded">
-      <c-header></c-header>
       <ul >
         <li v-for="item in data">
           <div class="row">

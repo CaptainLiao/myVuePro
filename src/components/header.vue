@@ -1,9 +1,9 @@
 <template>
   <div id="header">
-    <div class="page">
+    <div class="h_page">
       <header class="bar bar-nav">
         <div class="content">
-          <a @click='showNavbar' class="icon icon-menu pull-left open-panel" data-panel='#panel-left-demo'></a>
+          <a @click='showNavbar' class="icon icon-menu pull-left"></a>
         </div>
         <a class="icon icon-refresh pull-right"></a>
         <h1 class="title">标题</h1>
@@ -22,8 +22,8 @@
     },
     methods: {
       showNavbar() {
-
-
+        $('.h_page').addClass("page page-current");
+        $.openPanel("#panel-left-demo");
       }
     }
   }

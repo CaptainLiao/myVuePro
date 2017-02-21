@@ -22,16 +22,13 @@
             data: {}
         }
     },
-    created() {
-      $("#header").find("div").removeClass('page')
-    },
     methods: {
       addBG() {
         console.log('aaa')
-        $(".page").addClass('page_bg')
+        //$(".page").addClass('page_bg')
       },
       removeBG() {
-        $(".page").removeClass('page_bg')
+        $(".h_page").removeClass('page page-current')
       }
     }
 
