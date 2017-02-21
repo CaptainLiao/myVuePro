@@ -38,16 +38,17 @@
         data:[]
       }
     },
+
     props: {
       "data-id": String
     },
     methods: {
       toTopicDetail(id) {
-        console.log(id)
         this.$router.push({name: 'topicDetail',params:{id: id}});
       },
       fetchDate() {
-        this.axios.get(this.CONFIG.API.topicList)
+        const query = this.$route.query;
+        this.axios.get(this.CONFIG.API.topicList + "?"+Object.keys(query)[0] +"=" +query.tab)
           .then((res)=>{
             $.hidePreloader();
             let data = res.data.data;

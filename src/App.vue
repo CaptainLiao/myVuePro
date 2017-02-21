@@ -61,6 +61,7 @@
     color: #fff;
     background: #1abc9c;
   }
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
