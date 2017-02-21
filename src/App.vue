@@ -12,25 +12,25 @@
 
     },
     methods: {
-    jumpToFirst() {   // 编程式导航
-      console.log(this)
-      router.push({name: 'firstcomponent', params: {id: 555}, query: {plan: 'sd'}})
-    },
-    jumpToTopic() {
-      router.push({name: 'topic'})
+      jumpToFirst() {   // 编程式导航
+        console.log(this)
+        router.push({name: 'firstcomponent', params: {id: 555}, query: {plan: 'sd'}})
+      },
+      jumpToTopic() {
+        router.push({name: 'topic'})
+      }
     }
   }
-}
 </script>
 
 <style lang="less" type="text/css" rel="stylesheet/less">
   * {
-   
+
   }
   html,body {
     background: #fff;
     font-family: Helvetica-Neue,Helvetica,Arial,sans-serif;
-     overflow: auto!important;
+    overflow: auto!important;
   }
   img {
     width:100%;

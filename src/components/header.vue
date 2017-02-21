@@ -1,6 +1,6 @@
 <template>
   <div id="header">
-    <div class="h_page">
+    <div class="h_page" :class="data.isShow">
       <header class="bar bar-nav">
         <div class="content">
           <a @click='showNavbar' class="icon icon-menu pull-left"></a>
@@ -17,7 +17,9 @@
   export default {
     data() {
       return {
+          data: {
 
+          }
       }
     },
     methods: {

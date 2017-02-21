@@ -1,6 +1,7 @@
 <template>
   <div id="topic">
     <c-header></c-header>
+    <back-top></back-top>
     <div class="content-padded">
       <ul >
         <li v-for="item in data">
@@ -26,7 +27,6 @@
         </li>
       </ul>
     </div>
-
   </div>
 </template>
 
@@ -45,35 +45,37 @@
       toTopicDetail(id) {
         console.log(id)
         this.$router.push({name: 'topicDetail',params:{id: id}});
+      },
+      fetchDate() {
+        this.axios.get(this.CONFIG.API.topicList)
+          .then((res)=>{
+            $.hidePreloader();
+            let data = res.data.data;
+            data.forEach((item) => {
+              let tab = item.tab;
+              let create_at = item.create_at;
+              let reply_at = item.last_reply_at;
+              if (!tab || tab == "") {
+                item.tab = 'other'
+              }
+              if(tab == "share" || tab == "job") {
+                item.tag = this.CONFIG.TAG.tag1
+              }else {
+                item.tag = this.CONFIG.TAG.tag2
+              }
+              item.create_time = utils.transformDate(create_at);
+              item.last_reply_time = utils.transformDate(reply_at);
+            });
+            this.data = data;
+          })
+          .catch((res) => {
+            console.log(res)
+          })
       }
     },
     mounted() {
       $.showPreloader();
-      this.axios.get(this.CONFIG.API.topicList)
-        .then((res)=>{
-          console.log(res)
-          $.hidePreloader();
-          let data = res.data.data;
-          data.forEach((item) => {
-            let tab = item.tab;
-            let create_at = item.create_at;
-            let reply_at = item.last_reply_at;
-            if (!tab || tab == "") {
-              item.tab = 'other'
-            }
-            if(tab == "share" || tab == "job") {
-              item.tag = this.CONFIG.TAG.tag1
-            }else {
-              item.tag = this.CONFIG.TAG.tag2
-            }
-            item.create_time = utils.transformDate(create_at);
-            item.last_reply_time = utils.transformDate(reply_at);
-          })
-          this.data = data;
-        })
-        .catch((res) => {
-          console.log(res)
-        })
+      this.fetchDate();
     }
   }
 </script>
