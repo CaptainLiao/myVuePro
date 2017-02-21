@@ -1,6 +1,6 @@
 <template>
     <div id="user_center">
-        <c-header></c-header>
+        <c-header title="用户中心"></c-header>
         <div class="avatar">
             <div class="avatar_img">
                 <avatar :avatar_url="data.avatar_url" :username="data.loginname"></avatar>
@@ -63,10 +63,7 @@
         </ul>
     </div>
 </div>
-</div>
-</div>
-</div>
-</div>
+
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
   <div id="topic">
-    <c-header></c-header>
+    <c-header :title="getTitle()"></c-header>
     <back-top></back-top>
     <div class="content-padded">
       <ul >
@@ -43,6 +43,14 @@
       "data-id": String
     },
     methods: {
+      getTitle() {
+        let str;
+        str = this.$route.query.tab;
+        if(!str) {
+          str = 'all'
+        }
+        return str;
+      },
       toTopicDetail(id) {
         this.$router.push({name: 'topicDetail',params:{id: id}});
       },
@@ -77,6 +85,9 @@
     mounted() {
       $.showPreloader();
       this.fetchDate();
+    },
+    watch: {
+      "$route": "fetchDate"
     }
   }
 </script>

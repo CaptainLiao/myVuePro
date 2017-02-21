@@ -1,6 +1,6 @@
 <template>
     <div id="topic_detail">
-        <c-header></c-header>
+        <c-header title="主题"></c-header>
         
         <div class="content-padded">
             <section class="td_title">

@@ -6,7 +6,7 @@
           <a @click='showNavbar' class="icon icon-menu pull-left"></a>
         </div>
         <a class="icon icon-me pull-right"></a>
-        <h1 class="title">{{title}}</h1>
+        <h1 class="title" v-text="title"></h1>
       </header>
     </div>
     <c-navbar></c-navbar>
@@ -14,15 +14,18 @@
 </template>
 
 <script type="text/javascript">
+
   export default {
     data() {
       return {
           data: {
 
           },
-        title: 'all',
         query: this.$route.query
       }
+    },
+    props:{
+      title: String,
     },
     watch: {
       "$route": "getTitle"
@@ -43,6 +46,9 @@
     },
     created() {
         this.getTitle();
+    },
+    components: {
+      "c-navbar": require('./navbar.vue')
     }
   }
 </script>
