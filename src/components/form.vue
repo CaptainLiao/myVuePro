@@ -1,5 +1,4 @@
 <template>
-  <div class="content">
     <div class="list-block">
       <ul>
         <li>
@@ -26,7 +25,4 @@
         </li>
       </ul>
     </div>
-  </div>
-
-
 </template>
