@@ -1,5 +1,8 @@
 <template>
-  <span @click="shareMsg" :des="des" class="icon icon-share"></span>
+  <span @click="shareMsg" :des="des" class="icon icon-share">
+    <span class="iconfont">&#xe62e;</span>
+  </span>
+
 </template>
 
 <script>
@@ -8,7 +11,6 @@
       "des": String
     },
     created() {
-
     },
     methods: {
       shareMsg() {
@@ -35,3 +37,7 @@
     }
   }
 </script>
+
+<style>
+  @import '../assets/less/iconfont/iconfont.css';
+</style>

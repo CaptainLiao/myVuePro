@@ -5,7 +5,7 @@
         <div class="content">
           <a @click='showNavbar' class="icon icon-menu pull-left"></a>
         </div>
-        <a class="icon icon-me pull-right"></a>
+        <router-link class="icon icon-me pull-right" :to="{name: 'login'}"></router-link>
         <h1 class="title" v-text="title"></h1>
       </header>
     </div>
