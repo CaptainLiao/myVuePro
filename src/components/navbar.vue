@@ -4,7 +4,7 @@
     <div class="panel panel-left panel-reveal theme-dark" id='panel-left-demo' @closed="removeBG">
       <div class="content-block">
         <div class="user-info">
-          <a href="#">登录</a>
+          <router-link :to="{name: 'login'}">登录</router-link>
         </div>
         <section class="line" @click="toggle">
           <router-link :to="{'name':'topic',query:{tab:'all'}}">全部</router-link>

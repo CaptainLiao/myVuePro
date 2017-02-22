@@ -9,6 +9,7 @@ import FirstComponent from 'components/firstcomponent'
 import Topic from 'view/topic'
 import TopicDetail from 'view/topic_detail'
 import UserCenter from 'view/user_center'
+import login from 'view/login'
 
 
 Vue.use(Router);
@@ -37,6 +38,11 @@ const routes = [
     path: "/user/:username",
     name: "userCenter",
     component: UserCenter
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: login
   }
 ];
 export default new Router({
