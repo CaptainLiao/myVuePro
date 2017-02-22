@@ -46,8 +46,21 @@
       getTitle() {
         let str;
         str = this.$route.query.tab;
-        if(!str) {
-          str = 'all'
+        switch (str) {
+          case "all":
+            str = "全部";
+            break;
+          case "share":
+            str = "分享";
+            break;
+          case "job":
+            str = "招聘";
+            break;
+          case "ask":
+            str = "问答";
+            break;
+          default:
+            str = "全部"
         }
         return str;
       },
@@ -82,7 +95,7 @@
           })
       }
     },
-    mounted() {
+    created() {
       $.showPreloader();
       this.fetchDate();
     },

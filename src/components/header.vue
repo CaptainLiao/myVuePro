@@ -27,25 +27,15 @@
     props:{
       title: String,
     },
-    watch: {
-      "$route": "getTitle"
-    },
     methods: {
       showNavbar() {
         $('.h_page').addClass("page page-current");
         $.openPanel("#panel-left-demo");
-      },
-      getTitle() {
-        const query = this.$route.query;
-        if(!query.tab) {
-          this.title = "all"
-        }else {
-          this.title = query.tab;
-        }
       }
+
     },
     created() {
-        this.getTitle();
+
     },
     components: {
       "c-navbar": require('./navbar.vue')
