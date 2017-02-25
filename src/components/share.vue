@@ -1,6 +1,6 @@
 <template>
-  <span @click="shareMsg" :des="des" class="icon icon-share">
-    <span class="iconfont">&#xe62e;</span>
+  <span @click="shareMsg" :des="des" class="iconfont">
+    &#xe62e;
   </span>
 
 </template>
