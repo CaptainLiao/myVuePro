@@ -3,31 +3,32 @@
  */
  import Vue from 'vue'
  import Vuex from 'vuex'
+ import * as actions from './actions'
+ import * as getters from './getters'
+ import login from './modules/login'
+
  Vue.use(Vuex)
 
  const state = {
-  username: '',
-  password: ''
+  register: '',
+  pwd: ''
 }
-const actions = {
-  saveName ({ commit }, name) {
-    commit('saveName1',name)
-  },
-  savePwd({commit}, pwd) {
-    commit('savePwd1',pwd)
-  }
-}
+
 const mutations = {
-  saveName1 (state,msg) {
-    state.username = msg;
-  },
-  savePwd1 (state,msg) {
-    state.password = msg;
-  }
+  // saveName1 (state,msg) {
+  //   state.username = msg;
+  // },
+  // savePwd1 (state,msg) {
+  //   state.password = msg;
+  // }
 }
 
 export default new Vuex.Store({
   state,
   actions,
-  mutations
+  getters,
+  mutations,
+  modules: {
+    login
+  }
 })

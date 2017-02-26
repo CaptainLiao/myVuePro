@@ -1,11 +1,13 @@
 <template>
-<div id="login" class="content-block">
+  <div id="login">
+    <c-header></c-header>
     <c-form></c-form>
-    <p><a href="javascript:;" @click=login class="button button-fill button-success">Fill Button </a></p>
+    <p class="content-block"><a href="javascript:;" @click=showState class="button button-fill button-success">登录</a></p>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
   export default {
     data() {
       return {
@@ -14,12 +16,13 @@
       }
     },
     methods: {
-      login() {
-        console.log(this.$store.state)
-      }
+      ...mapGetters([
+        'showState'
+      ])
     },
     components: {
-      "c-form": require('../components/form.vue')
+      "c-form": require('../components/form.vue'),
+      "c-header": require('../components/header.vue')
     }
   }
 </script>
