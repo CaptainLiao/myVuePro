@@ -27,7 +27,7 @@
   export default {
     data() {
         return {
-            data: {}
+        
         }
     },
     methods: {
@@ -42,6 +42,9 @@
 </script>
 
 <style lang="less" scoped>
+  .panel-overlay {
+    z-index: 0
+  }
   .page_bg {
     background-color: red;
   }

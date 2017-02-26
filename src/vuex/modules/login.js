@@ -4,8 +4,21 @@ const state = {
 }
 const getters = {
   showState (state) {
-    console.log(state.password)
-    console.log(state.username)
+    let user = {};
+    if(!state.username) {
+      $.alert('请填写用户名！')
+      return
+    }
+    if(!state.password) {
+      $.alert("请填写密码！")
+      return
+    }
+    $.alert('登录成功！', ()=> {
+      user.username = state.username;
+      user.password = state.password;
+      window.sessionStorage.setItem('user', JSON.stringify(user))
+      history.go(-1)
+    })
   }
 }
 const actions = {

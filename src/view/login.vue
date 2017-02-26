@@ -1,6 +1,6 @@
 <template>
   <div id="login">
-    <c-header></c-header>
+    <c-header title="登录"></c-header>
     <c-form></c-form>
     <p class="content-block"><a href="javascript:;" @click=showState class="button button-fill button-success">登录</a></p>
   </div>
