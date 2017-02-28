@@ -9,7 +9,7 @@
         <h1 class="title" v-text="title"></h1>
       </header>
     </div>
-    <c-navbar></c-navbar>
+    <c-navbar isShow="isShow"></c-navbar>
   </div>
 </template>
 
@@ -19,7 +19,7 @@
     data() {
       return {
           data: {
-
+            isShow: false
           },
         query: this.$route.query
       }
@@ -29,6 +29,7 @@
     },
     methods: {
       showNavbar() {
+        this.isShow = true;
         $('.h_page').addClass("page page-current");
         $.openPanel("#panel-left-demo");
       }

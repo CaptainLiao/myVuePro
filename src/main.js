@@ -6,11 +6,8 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import utils from './lib/utils'
-import vuex from 'vuex'
-import fastclick from 'fastclick'
 
-// 全局引入iconfont.css
-import './assets/less/iconfont/iconfont.css';
+import store from './vuex/store'
 
 import Hello from  './components/Hello.vue'
 import FirstComponent from './components/firstcomponent.vue'
@@ -20,9 +17,7 @@ import BackTop from './components/backTop.vue'
 
 import CONFIG from './lib/config.js'
 
-Vue.use(VueAxios, axios, vuex);
-
-fastclick.attach(document.body);
+Vue.use(...[VueAxios, axios]);
 
 Vue.prototype.CONFIG = CONFIG;
 Vue.prototype.getAjax = utils.getAjax;
@@ -42,5 +37,6 @@ Vue.component('back-top', BackTop)
 new Vue({
   router,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  store
 }).$mount('#app')
