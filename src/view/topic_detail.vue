@@ -24,6 +24,7 @@
                 <div class="fr">
                   <span>{{item.likes}}</span>
                   <c-share :des="item.content"></c-share>
+                  <c-collect></c-collect>
                 </div>
               </div>
             </div>
@@ -73,7 +74,8 @@
       this.getAjax('GET', this.CONFIG.API.topicInfo+ id, '', renderPage)
     },
     components: {
-        "c-share": require("../components/share.vue")
+      "c-share": require("../components/share.vue"),
+      "c-collect": require('../components/collect.vue')
     }
   }
 </script>
