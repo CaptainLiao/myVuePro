@@ -23,7 +23,7 @@
                 <div class="fl"><span>{{item.author.loginname}}</span> 发表于 {{item.reply_time}}</div>
                 <div class="fr">
                   <span>{{item.likes}}</span>
-                  <c-collect></c-collect>
+                  <c-collect :id="ids"></c-collect>
                   <c-share :des="item.content"></c-share>
 
                 </div>
@@ -42,11 +42,13 @@
   export default {
     data() {
       return {
-        data: {}
+        data: {},
+        ids: ''
       }
     },
     mounted() {
       let id = this.$route.params.id;
+      this.ids=id;
       let _this = this;
       let renderPage = (res)=> {
         let data =  res.data.data;
@@ -59,8 +61,8 @@
         }else {
           data.tag = _this.CONFIG.TAG.tag2
         }
-        data.create_time= _this.utils.transformDate(data.create_at)
-        data.loginname = data.author.loginname
+        data.create_time= _this.utils.transformDate(data.create_at);
+        data.loginname = data.author.loginname;
         let replies = data.replies;
         if(replies && replies instanceof Array) {
           data.reply_total = replies.length;
@@ -71,7 +73,7 @@
           data.reply_total = 0;
         }
         _this.data = data;
-      }
+      };
       this.getAjax('GET', this.CONFIG.API.topicInfo+ id, '', renderPage)
     },
     components: {
