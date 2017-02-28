@@ -17,6 +17,8 @@ import BackTop from './components/backTop.vue'
 
 import CONFIG from './lib/config.js'
 
+
+
 Vue.use(...[VueAxios, axios]);
 
 Vue.prototype.CONFIG = CONFIG;
@@ -25,7 +27,6 @@ Vue.prototype.utils = utils;
 Vue.prototype.$nextTick = function (fn) {
   return Vue.nextTick(fn, this)
 };
-
 
 
 

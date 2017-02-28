@@ -12,7 +12,6 @@
     <c-navbar isShow="isShow"></c-navbar>
   </div>
 </template>
-
 <script type="text/javascript">
 
   export default {

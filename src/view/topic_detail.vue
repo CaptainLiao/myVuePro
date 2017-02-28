@@ -23,8 +23,9 @@
                 <div class="fl"><span>{{item.author.loginname}}</span> 发表于 {{item.reply_time}}</div>
                 <div class="fr">
                   <span>{{item.likes}}</span>
-                  <c-share :des="item.content"></c-share>
                   <c-collect></c-collect>
+                  <c-share :des="item.content"></c-share>
+
                 </div>
               </div>
             </div>

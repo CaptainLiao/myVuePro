@@ -40,4 +40,5 @@
 
 <style>
 
+  @import "../assets/less/iconfont/iconfont.css";
 </style>
