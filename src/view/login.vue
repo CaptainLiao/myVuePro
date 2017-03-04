@@ -1,4 +1,50 @@
 <template>
+  <div id="login" class="content-block">
+    <c-header title="登录"></c-header>
+    <input type="text" v-model="msg" class="login-info" name="Access Token" placeholder="Access Token" />
+    <p><a href="javascript:;" @click=saveUser class="button button-fill button-success login-button">登录</a></p>
+  </div>
+</template>
+
+<style type="text/css" lang="less" scoped>
+  .login-info {
+    border: 0;
+    outline: 0;
+    width: 100%;
+    line-height: 1.8rem;
+    margin-top: 2rem;
+    border-bottom: 1px solid #4cd964;
+  }
+  .login-button {
+    line-height: 1.8rem;
+    height: 1.8rem;
+    font-size: 18px;
+  }
+</style>
+
+<script type="text/javascript">
+  export default {
+    data() {
+      return {
+        msg: ''
+      }
+    },
+    methods: {
+      saveUser() {
+        let self = this;
+        this.timer = null;
+        window.sessionStorage.setItem('user', this.msg);
+        $.toast('操作成功，正在跳转...', 2345, 'success top');
+        this.$router.push({name:'userCenter', params:{username: 'CaptainLiao'}})
+        console.log(this.msg)
+      }
+    }
+  }
+</script>
+
+
+<!-- 
+<template>
   <div id="login">
     <c-header title="登录"></c-header>
     <c-form></c-form>
@@ -25,4 +71,4 @@ import { mapGetters } from 'vuex'
       "c-header": require('../components/header.vue')
     }
   }
-</script>
+</script> -->

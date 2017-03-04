@@ -7,8 +7,8 @@
                 <p>{{data.loginname}}</p>
             </div>
             <div class="row avatar_info">
-                <span class="col-50 left">创建时间：{{data.create_time}}</span>
-                <span class="col-50 right">积分：<span class="score">{{data.score}}</span></span>
+                <span class="col-60 left">创建时间：{{data.create_time}}</span>
+                <span class="col-40 right">积分：<span class="score">{{data.score}}</span></span>
             </div>
         </div>
 

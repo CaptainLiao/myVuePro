@@ -5,11 +5,13 @@
         <div class="content">
           <a @click='showNavbar' class="icon icon-menu pull-left"></a>
         </div>
-        <router-link class="icon icon-me pull-right" :to="{name: 'login'}"></router-link>
+        <a class="icon icon-me pull-right" @click=toLogin></a>
         <h1 class="title" v-text="title"></h1>
       </header>
     </div>
-    <c-navbar isShow="isShow"></c-navbar>
+    <c-navbar isShow="isShow">
+    
+    </c-navbar>
   </div>
 </template>
 <script type="text/javascript">
@@ -31,6 +33,14 @@
         this.isShow = true;
         $('.h_page').addClass("page page-current");
         $.openPanel("#panel-left-demo");
+      },
+      toLogin() {
+        let user = sessionStorage.getItem('user');
+        if(!user) {
+          this.$router.push({name: 'login'})
+        }else {
+          this.$router.push({name: 'userCenter'})
+        }
       }
 
     },
