@@ -2,7 +2,7 @@
   <div id="login" class="content-block">
     <c-header title="登录"></c-header>
     <input type="text" v-model="msg" class="login-info" name="Access Token" placeholder="Access Token" />
-    <p><a href="javascript:;" @click=saveUser class="button button-fill button-success login-button">登录</a></p>
+    <p><a href="javascript:;" @click=checkToSave class="button button-fill button-success login-button">登录</a></p>
   </div>
 </template>
 
@@ -30,13 +30,19 @@
       }
     },
     methods: {
-      saveUser() {
+      checkToSave() {
         let self = this;
-        this.timer = null;
-        window.sessionStorage.setItem('user', this.msg);
-        $.toast('操作成功，正在跳转...', 2345, 'success top');
-        this.$router.push({name:'userCenter', params:{username: 'CaptainLiao'}})
-        console.log(this.msg)
+        function saveUser(json) {
+          let loginname = json.data.loginname;
+          window.sessionStorage.setItem('user', loginname);
+          self.$router.push({name:'userCenter', params:{username: loginname}})
+        }
+        this.getAjax('POST', this.CONFIG.API.checkAccessToken, {accesstoken: this.msg}, saveUser)
+    
+    
+        //$.toast('操作成功，正在跳转...', 2345, 'success top');
+        //this.$router.push({name:'userCenter', params:{username: 'CaptainLiao'}})
+      
       }
     }
   }

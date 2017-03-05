@@ -2,6 +2,7 @@
 
 const utils = {
   getAjax(method, url, opts, cb) {
+    $('body').removeClass('panel-closing')
     $.showPreloader();
     $(".content-padded").hide();
     this.axios({
@@ -9,15 +10,17 @@ const utils = {
       url: url,
       data: opts || '',
     }).then((res) => {
+
       $.hidePreloader();
       $(".content-padded").show();
       console.log(res)
       if(cb && cb instanceof Function) {
         cb(res)
       }
-    }).catch((res) => {
+    }).catch((err) => {
       $.hidePreloader();
-      $.alert('error：' +res.statusText)
+      console.log(err)
+      $.alert(err)
     })
   },
   transformDate(date) {

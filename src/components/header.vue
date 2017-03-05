@@ -20,7 +20,7 @@
     data() {
       return {
           data: {
-            isShow: false
+            isShow: true
           },
         query: this.$route.query
       }
@@ -28,18 +28,21 @@
     props:{
       title: String,
     },
+
     methods: {
       showNavbar() {
         this.isShow = true;
         $('.h_page').addClass("page page-current");
+        //$('body').addClass('with-panel-left-reveal')
         $.openPanel("#panel-left-demo");
+        //$('.panel').show();
       },
       toLogin() {
         let user = sessionStorage.getItem('user');
         if(!user) {
           this.$router.push({name: 'login'})
         }else {
-          this.$router.push({name: 'userCenter'})
+          this.$router.push({name: 'userCenter', params: {username: user}})
         }
       }
 

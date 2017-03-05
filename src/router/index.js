@@ -11,8 +11,6 @@ import TopicDetail from 'view/topic_detail'
 import UserCenter from 'view/user_center'
 import login from 'view/login'
 
-
-Vue.use(Router);
 const routes = [
   {
     path: '/hello',
@@ -45,8 +43,5 @@ const routes = [
     component: login
   }
 ];
-export default new Router({
-  mode: 'history',
-  base: __dirname,
-  routes: routes
-})
+
+export default routes
